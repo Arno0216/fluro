@@ -10,10 +10,7 @@
 import 'package:flutter/widgets.dart';
 
 ///
-enum HandlerType {
-  route,
-  function,
-}
+enum HandlerType { route, function, future }
 
 ///
 class Handler {
@@ -23,12 +20,10 @@ class Handler {
 }
 
 ///
-typedef Route<T> RouteCreator<T>(
-    RouteSettings route, Map<String, List<String>> parameters);
+typedef Route<T> RouteCreator<T>(RouteSettings route, Map<String, List<String>> parameters);
 
 ///
-typedef Widget HandlerFunc(
-    BuildContext context, Map<String, List<String>> parameters);
+typedef dynamic HandlerFunc(BuildContext context, Map<String, List<String>> parameters, [dynamic object]);
 
 ///
 class AppRoute {
@@ -59,10 +54,16 @@ class RouteMatch {
   RouteMatch(
       {this.matchType = RouteMatchType.noMatch,
       this.route,
-      this.errorMessage = "Unable to match route. Please check the logs."});
+      this.errorMessage = "Unable to match route. Please check the logs.",
+      this.handler,
+      this.parameters,
+      this.object});
   final Route<dynamic> route;
   final RouteMatchType matchType;
   final String errorMessage;
+  final Handler handler;
+  final Map<String, List<String>> parameters;
+  final dynamic object;
 }
 
 class RouteNotFoundException implements Exception {
