@@ -52,7 +52,7 @@ class Router {
     Completer completer = new Completer();
     Future future = completer.future;
     if (routeMatch.matchType == RouteMatchType.nonVisual) {
-      if (routeMatch.handler.type == HandlerType.future) {
+      if (routeMatch.handler.type != null && routeMatch.handler.type == HandlerType.future) {
         future = routeMatch.handler.handlerFunc(context, routeMatch.parameters, routeMatch.object);
       }
       completer.complete();
