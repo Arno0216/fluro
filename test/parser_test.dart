@@ -16,7 +16,7 @@ void main() {
     String route = "/users/:id";
     FluroRouter router = FluroRouter();
     router.define(route, handler: null);
-    AppRouteMatch match = router.match(path);
+    AppRouteMatch? match = router.match(path);
     expect(
         match?.parameters,
         equals(<String, List<String>>{
@@ -29,7 +29,7 @@ void main() {
     String route = "/users/:id";
     FluroRouter router = FluroRouter();
     router.define(route, handler: null);
-    AppRouteMatch match = router.match(path);
+    AppRouteMatch? match = router.match(path);
     expect(
         match?.parameters,
         equals(<String, List<String>>{
@@ -43,7 +43,7 @@ void main() {
     String route = "/users/create";
     FluroRouter router = FluroRouter();
     router.define(route, handler: null);
-    AppRouteMatch match = router.match(path);
+    AppRouteMatch? match = router.match(path);
     expect(
         match?.parameters,
         equals(<String, List<String>>{
@@ -58,7 +58,7 @@ void main() {
     String route = "/users/create";
     FluroRouter router = FluroRouter();
     router.define(route, handler: null);
-    AppRouteMatch match = router.match(path);
+    AppRouteMatch? match = router.match(path);
     expect(
         match?.parameters,
         equals(<String, List<String>>{
@@ -72,7 +72,7 @@ void main() {
     String route = "/users/:id";
     FluroRouter router = FluroRouter();
     router.define(route, handler: null, transitionType: TransitionType.inFromRight);
-    AppRouteMatch match = router.match(path);
+    AppRouteMatch match = router.match(path)!;
     expect(TransitionType.inFromRight, match.route.transitionType);
   });
 }

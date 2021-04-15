@@ -16,20 +16,20 @@ enum HandlerType { route, function, future }
 class Handler {
   Handler({this.type = HandlerType.route, this.handlerFunc});
   final HandlerType type;
-  final HandlerFunc handlerFunc;
+  final HandlerFunc? handlerFunc;
 }
 
 ///
-typedef Route<T> RouteCreator<T>(RouteSettings route, Map<String, List<String>> parameters);
+typedef Route<T> RouteCreator<T>(RouteSettings? route, Map<String, List<String>>? parameters);
 
 ///
-typedef dynamic HandlerFunc(BuildContext context, Map<String, List<String>> parameters, [dynamic object]);
+typedef dynamic HandlerFunc(BuildContext? context, Map<String, List<String>>? parameters, [dynamic object]);
 
 ///
 class AppRoute {
   String route;
   dynamic handler;
-  TransitionType transitionType;
+  TransitionType? transitionType;
   AppRoute(this.route, this.handler, {this.transitionType});
 }
 
@@ -62,11 +62,11 @@ class RouteMatch {
       this.handler,
       this.parameters,
       this.object});
-  final Route<dynamic> route;
+  final Route<dynamic>? route;
   final RouteMatchType matchType;
   final String errorMessage;
-  final Handler handler;
-  final Map<String, List<String>> parameters;
+  final Handler? handler;
+  final Map<String, List<String>>? parameters;
   final dynamic object;
 }
 
